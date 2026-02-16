@@ -11,9 +11,15 @@ import java.time.LocalDateTime;
 public class FeedbackService {
 
     private final FeedbackRepository repository;
+    private final NotificationService notificationService;
+    private final SQSService sqsService;
 
-    public FeedbackService(FeedbackRepository repository) {
+    public FeedbackService(FeedbackRepository repository, 
+                          NotificationService notificationService,
+                          SQSService sqsService) {
         this.repository = repository;
+        this.notificationService = notificationService;
+        this.sqsService = sqsService;
     }
 
     public Feedback create(String description, int score) {
@@ -26,7 +32,17 @@ public class FeedbackService {
         feedback.setUrgencyLevel(urgency);
         feedback.setCreatedAt(LocalDateTime.now());
 
-        return repository.save(feedback);
+        Feedback savedFeedback = repository.save(feedback);
+        
+        // Envia notificação se for crítico
+        notificationService.sendCriticalNotification(savedFeedback);
+        
+        // Envia para SQS se for crítico (AWS)
+        if (urgency == UrgencyLevel.HIGH) {
+            sqsService.sendCriticalFeedback(savedFeedback);
+        }
+        
+        return savedFeedback;
     }
 
     private UrgencyLevel calculateUrgency(int score) {

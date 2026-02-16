@@ -1,0 +1,193 @@
+{
+	"info": {
+		"name": "Feedback API - Tech Challenge Fase 4",
+		"description": "Coleção completa para testar a API de Feedback Serverless\n\n**IMPORTANTE:** Configure a variável {{ec2_url}} antes de usar:\n1. Clique em 'Variables' na collection\n2. Defina: http://SEU_IP_EC2:8080\n3. Exemplo: http://54.123.45.67:8080",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "ec2_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Feedbacks Positivos",
+			"item": [
+				{
+					"name": "Feedback Excelente (Score 9)",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"Excelente curso! Conteúdo muito bem estruturado e professor didático.\",\n  \"score\": 9\n}"
+						},
+						"url": {
+							"raw": "{{ec2_url}}/avaliacao",
+							"host": ["{{ec2_url}}"],
+							"path": ["avaliacao"]
+						}
+					}
+				},
+				{
+					"name": "Feedback Perfeito (Score 10)",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"Perfeito! Superou todas as expectativas. Recomendo!\",\n  \"score\": 10\n}"
+						},
+						"url": {
+							"raw": "{{ec2_url}}/avaliacao",
+							"host": ["{{ec2_url}}"],
+							"path": ["avaliacao"]
+						}
+					}
+				},
+				{
+					"name": "Feedback Bom (Score 8)",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"Muito bom! Aprendi bastante com este curso.\",\n  \"score\": 8\n}"
+						},
+						"url": {
+							"raw": "{{ec2_url}}/avaliacao",
+							"host": ["{{ec2_url}}"],
+							"path": ["avaliacao"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Feedbacks Críticos (Gera Notificação + Email)",
+			"item": [
+				{
+					"name": "⚠️ Feedback Crítico (Score 3) - Envia Email",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"Muito ruim! Professor despreparado e conteúdo confuso.\",\n  \"score\": 3\n}"
+						},
+						"url": {
+							"raw": "{{ec2_url}}/avaliacao",
+							"host": ["{{ec2_url}}"],
+							"path": ["avaliacao"]
+						}
+					}
+				},
+				{
+					"name": "🚨 Feedback Péssimo (Score 2) - Envia Email",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"Péssimo atendimento! Não consegui acessar o material.\",\n  \"score\": 2\n}"
+						},
+						"url": {
+							"raw": "{{ec2_url}}/avaliacao",
+							"host": ["{{ec2_url}}"],
+							"path": ["avaliacao"]
+						}
+					}
+				},
+				{
+					"name": "🔴 Feedback Horrível (Score 1) - Envia Email",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"Horrível! Perda total de tempo e dinheiro.\",\n  \"score\": 1\n}"
+						},
+						"url": {
+							"raw": "{{ec2_url}}/avaliacao",
+							"host": ["{{ec2_url}}"],
+							"path": ["avaliacao"]
+						}
+					}
+				},
+				{
+					"name": "🔴 Feedback Zero (Score 0) - Envia Email",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"Pior curso que já fiz! Totalmente desorganizado.\",\n  \"score\": 0\n}"
+						},
+						"url": {
+							"raw": "{{ec2_url}}/avaliacao",
+							"host": ["{{ec2_url}}"],
+							"path": ["avaliacao"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Feedbacks Moderados",
+			"item": [
+				{
+					"name": "Feedback Regular (Score 5)",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"Regular. Poderia melhorar em alguns aspectos.\",\n  \"score\": 5\n}"
+						},
+						"url": {
+							"raw": "{{ec2_url}}/avaliacao",
+							"host": ["{{ec2_url}}"],
+							"path": ["avaliacao"]
+						}
+					}
+				},
+				{
+					"name": "Feedback Mediano (Score 6)",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"Mediano. Atendeu o básico mas esperava mais.\",\n  \"score\": 6\n}"
+						},
+						"url": {
+							"raw": "{{ec2_url}}/avaliacao",
+							"host": ["{{ec2_url}}"],
+							"path": ["avaliacao"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Relatórios",
+			"item": [
+				{
+					"name": "📊 Disparar Relatório Semanal (Envia Email)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{ec2_url}}/relatorio/semanal",
+							"host": ["{{ec2_url}}"],
+							"path": ["relatorio", "semanal"]
+						},
+						"description": "Dispara a Lambda de relatório semanal que:\n1. Consulta feedbacks dos últimos 7 dias\n2. Calcula estatísticas\n3. Envia email com relatório\n\n**Resposta esperada:**\n```json\n{\n  \"message\": \"Relatório semanal disparado com sucesso\",\n  \"lambdaResponse\": \"Relatório gerado e enviado\",\n  \"statusCode\": 200\n}\n```\n\n**Email chega em 1-2 minutos!**"
+					}
+				}
+			]
+		}
+	]
+}
