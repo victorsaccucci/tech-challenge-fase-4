@@ -66,10 +66,10 @@
 			]
 		},
 		{
-			"name": "Feedbacks Críticos (Gera Notificação + Email)",
+			"name": "Feedbacks Criticos (Gera Notificacao + Email)",
 			"item": [
 				{
-					"name": "⚠️ Feedback Crítico (Score 3) - Envia Email",
+					"name": "Feedback Critico (Score 3) - Envia Email",
 					"request": {
 						"method": "POST",
 						"header": [{"key": "Content-Type", "value": "application/json"}],
@@ -85,7 +85,7 @@
 					}
 				},
 				{
-					"name": "🚨 Feedback Péssimo (Score 2) - Envia Email",
+					"name": "Feedback Pessimo (Score 2) - Envia Email",
 					"request": {
 						"method": "POST",
 						"header": [{"key": "Content-Type", "value": "application/json"}],
@@ -101,7 +101,7 @@
 					}
 				},
 				{
-					"name": "🔴 Feedback Horrível (Score 1) - Envia Email",
+					"name": "Feedback Horrivel (Score 1) - Envia Email",
 					"request": {
 						"method": "POST",
 						"header": [{"key": "Content-Type", "value": "application/json"}],
@@ -117,7 +117,7 @@
 					}
 				},
 				{
-					"name": "🔴 Feedback Zero (Score 0) - Envia Email",
+					"name": "Feedback Zero (Score 0) - Envia Email",
 					"request": {
 						"method": "POST",
 						"header": [{"key": "Content-Type", "value": "application/json"}],
@@ -175,7 +175,7 @@
 			"name": "Relatórios",
 			"item": [
 				{
-					"name": "📊 Disparar Relatório Semanal (Envia Email)",
+					"name": "Disparar Relatorio Semanal (Envia Email)",
 					"request": {
 						"method": "POST",
 						"header": [],
